@@ -33,10 +33,10 @@ conda activate INSP
 ## Citation
 
 ```
-@InProceedings{Xu_2022_INSP,
-    author = {Xu, Dejia and Wang, Peihao and Jiang, Yifan and Fan, Zhiwen and Wang, Zhangyang},
-    title = {Signal Processing for Implicit Neural Representations},
-    journal={},
+@inproceedings{Xu_2022_INSP,
+    title={Signal Processing for Implicit Neural Representations},
+    author={Xu, Dejia and Wang, Peihao and Jiang, Yifan and Fan, Zhiwen and Wang, Zhangyang},
+    booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
     year={2022}
 }
 ```

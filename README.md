@@ -1,5 +1,11 @@
 # Signal Processing for Implicit Neural Representations
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+The official implementation of NeurIPS 2022 paper ["Signal Processing for Implicit Neural Representations"]().
+
+Dejia Xu*, Peihao Wang*, Yifan Jiang, Zhiwen Fan, Zhangyang (Atlas) Wang
+
 [[Paper]]() [[Website]](https://vita-group.github.io/INSP)
 
 ## Method Overview

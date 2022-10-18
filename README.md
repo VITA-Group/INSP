@@ -6,7 +6,7 @@ The official implementation of NeurIPS 2022 paper ["Signal Processing for Implic
 
 Dejia Xu*, Peihao Wang*, Yifan Jiang, Zhiwen Fan, Zhangyang (Atlas) Wang
 
-[[Paper]]() [[Website]](https://vita-group.github.io/INSP)
+[[Paper]](https://arxiv.org/abs/2210.08772) [[Website]](https://vita-group.github.io/INSP)
 
 ## Method Overview
 

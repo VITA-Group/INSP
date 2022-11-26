@@ -44,19 +44,19 @@ model.load_state_dict(torch.load(args.ckpt_path))
 model.eval()
 
 if args.target == 'blur':
-    base = './data/test_color_ori/'
+    base = './grad/test_color_ori/'
     suff = '_ori'
 elif args.target == 'deblur':
-    base = './data/test_color_blur/'
+    base = './grad/test_color_blur/'
     suff = '_blur'
 elif args.target == 'denoise':
-    base = './data/test_color_noise/'
+    base = './grad/test_color_noise/'
     suff = '_noise'
 elif args.target == 'inpainting':
-    base = './data/test_color_hole/'
+    base = './grad/test_color_hole/'
     suff = '_hole'
 elif args.target == 'inpainting_text':
-    base = './data/test_color_inpainting_text/'
+    base = './grad/test_color_inpainting_text/'
     suff = '_inpainting_text'
 import dataio
 
@@ -68,12 +68,12 @@ grad_li = sorted(grad_li)
 for idx, cur in enumerate(grad_li):
   grad = np.load(cur)
   grad = grad.transpose(1, 0)
-  print(grad.shape, '??')
+#   print(grad.shape, '??')
   for i in range(grad.shape[0]):
     while (grad[i].max() > 10):
         grad[i] /= 256
   grad = torch.from_numpy(grad).cuda()
-  print(grad.shape)
+#   print(grad.shape)
   with torch.no_grad():
     out = model({'grad': grad.permute(1, 0)})
     out = out['new_img'].detach().cpu().view(256, 256, 3).numpy() * 255

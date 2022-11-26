@@ -39,9 +39,10 @@ p.add_argument('--model_type', type=str, default='sine',
 
 p.add_argument('--img_path', type=str, help='Path to Image.', default='camera')
 p.add_argument('--checkpoint_path', default=None, help='Checkpoint to trained model.')
+p.add_argument('--type', default=None, help='Image type: None, inpainting, blur, noise')
 opt = p.parse_args()
 
-img_dataset = dataio.NoisyCamera(noise_level=opt.noise_level, img_path=opt.img_path, sz=opt.sz)
+img_dataset = dataio.NoisyCamera(noise_level=opt.noise_level, img_path=opt.img_path, sz=opt.sz, type=opt.type)
 coord_dataset = dataio.Implicit2DWrapper(img_dataset, sidelength=opt.sz, compute_diff='gradients', ti=opt.num_epochs)
 image_resolution = (opt.sz, opt.sz)
 

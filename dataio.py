@@ -602,16 +602,16 @@ class Implicit2DWrapper_multimlp_ray_offline(torch.utils.data.Dataset):
             base = './data/train_color_ori/'
             suff = '_ori'
         elif target == 'deblur':
-            base = './data/train_color_blur/'
+            base = './grad/train_color_blur/'
             suff = '_blur'
         elif target == 'denoise':
-            base = './data/train_color_noise/'
+            base = './grad/train_color_noise/'
             suff = '_noise'
         elif target == 'inpainting':
-            base = './data/train_color_hole/'
+            base = './grad/train_color_hole/'
             suff = '_hole'
         elif target == 'inpainting_text':
-            base = './data/train_color_inpainting_text/'
+            base = './grad/train_color_inpainting_text/'
             suff = '_inpainting_text'
             
         for idx in tqdm.tqdm(range(num)):

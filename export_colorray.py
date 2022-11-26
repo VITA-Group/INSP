@@ -46,7 +46,7 @@ print(len(li))
 
 # data
 sz = 256
-img_dataset = dataio.NoisyCamera_multimlp(img_path='div2k', img_num=1)
+img_dataset = dataio.NoisyCamera_multimlp_rays(img_path='div2k', img_num=1)
 coord_dataset = dataio.Implicit2DWrapper_multimlp_ray(img_dataset, sidelength=sz, compute_diff='blur_x', sigma=5)
 image_resolution = (sz, sz)
 dataloader = DataLoader(coord_dataset, shuffle=False, batch_size=4096, pin_memory=False, num_workers=4)

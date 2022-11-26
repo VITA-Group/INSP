@@ -30,6 +30,48 @@ conda activate INSP
 - Train INSP-Net
 - Inference INSP-Net
 
+## Image Processing
+
+For image processing, we experiment on div2k dataset.
+
+```bash
+wget http://data.vision.ee.ethz.ch/cvl/DIV2K/DIV2K_train_HR.zip &
+unzip DIV2K_train_HR.zip
+```
+
+- Fit multiple INR 
+
+    Use `--type ` to specify the type of images you want to train on.
+
+    ```python gen_div2k.py | zsh```
+
+- Export gradients for INR 
+
+    `--load` is used for `glob` to filter out corresponding INRs.
+
+    ```
+    python export_colorray.py --save_dir grad/train_color_noise/ --load 'div2k*.png_color_noise_'
+    ```
+
+    Then, manually divide `grad/train_color_noise` and put a few of them into `grad/test_color_noise`
+
+- Train INSP-Net
+
+    `--img_num` changes the number of images that are used for training.
+    
+    The training should converge in a couple of minutes.
+
+    ```
+    python experiment_scripts/train_img_grad_offline.py --model_type=sine --experiment_name denoise --noise_level 0 --target denoise --img_num 100 --overwrite --sigma 7 --sz 256 --batch_size 10240 --lr 1e-4
+    ```
+
+- Inference INSP-Net
+
+    ```
+    python eval_insp.py --save_path output/denoise --target denoise --ckpt_path logs/denoise/checkpoints/model_current.pth
+    ```
+
+
 ## Citation
 
 ```

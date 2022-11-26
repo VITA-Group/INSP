@@ -62,65 +62,22 @@ class INSP(nn.Module):
         self.fc2 = nn.Linear(256, 256)
         self.fc3 = nn.Linear(256, 256)
         self.fc5 = nn.Linear(256, 256)
-        # self.fc6 = nn.Linear(256, 256)
         self.fc4 = nn.Linear(256, out_c)
-        # self.d = nn.Dropout(p=0.2)
     def forward(self, data):
-        # [b, 12]
         x = data['grad']
-        # print(x.shape)
-        # [b, 12, 1]
-        # print(x.shape.unsqueeze(-1))
-        # x = rearrange(x, 'b w (n c) -> b n w c', c=1)
-        # [b, 1, 12, 1]
-        # [64, 784, 127, 1]
         x = self.fc1(x)
-        # x = self.d(x)
-        # [64, 784, 127, 8]
-        # [64, 8 * 127, 784]
         x = F.leaky_relu(x, negative_slope=0, inplace=True)
-        # [64, 784, 8 * 127]
         x = self.fc2(x)
-        # [64, 256, 784]
         x = F.leaky_relu(x, negative_slope=0, inplace=True)
         x = self.fc3(x)
-        # [64, 784, 256]
         x = F.leaky_relu(x, negative_slope=0, inplace=True)
-        # x = self.d(x)
         x = self.fc5(x)
-        # [64, 784, 256]
-        # [rgb] [xy] [784, 6]
         x = F.leaky_relu(x, negative_slope=0, inplace=True)
         x = self.fc4(x)
         return {'new_img': x}
-
-
-class INSP_1layer(nn.Module):
-    def __init__(self, in_c=3*23, out_c=3) -> None:
-        super().__init__()
-        # self.fc1 = nn.Linear(in_c, 256)
-        # self.fc2 = nn.Linear(256, 256)
-        # self.fc3 = nn.Linear(256, 256)
-        # self.fc5 = nn.Linear(256, 256)
-        # self.fc6 = nn.Linear(256, 256)
-        self.fc4 = nn.Linear(in_c, out_c)
-        # self.d = nn.Dropout(p=0.2)
-    def forward(self, data):
-        # [b, 12]
-        x = data['grad']
-        # print(x.shape)
-        # [b, 12, 1]
-        # print(x.shape.unsqueeze(-1))
-        # x = rearrange(x, 'b w (n c) -> b n w c', c=1)
-        # [b, 1, 12, 1]
-        # [64, 784, 127, 1]
-        x = self.fc4(x)
-        return {'new_img': x}
-                
 
 # Define the model.
-model = INSP(in_c=9, out_c=3).cuda()
-model.cuda()
+model = INSP(in_c=65, out_c=3).cuda()
 
 root_path = os.path.join(opt.logging_root, opt.experiment_name)
 

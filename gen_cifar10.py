@@ -1,6 +1,6 @@
 import os, glob
 
-folder = '/dataset/cifar10/test/'
+folder = './data/cifar10/test/'
 class_list = os.listdir(folder)
 ww = [i for i in range(8) if i not in [3, 5]]
 for cls in class_list:

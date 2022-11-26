@@ -1,6 +1,6 @@
 import os, glob
 
-div2k_folder = '/dataset/DIV2K_train_HR'
+div2k_folder = './data/DIV2K_train_HR'
 li = glob.glob(div2k_folder + '/*.png')
 li = sorted(li)[:200]
 GPU_NUM = 8

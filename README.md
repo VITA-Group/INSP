@@ -71,6 +71,11 @@ unzip DIV2K_train_HR.zip
     python eval_insp.py --save_path output/denoise --target denoise --ckpt_path logs/denoise/checkpoints/model_current.pth
     ```
 
+The INRs used in our experiments can be found [here](https://drive.google.com/drive/folders/1VaEgKiWIGpQhIw5uxPJGWL0OdTTM-cuo?usp=sharing)
+
+## Image Classification
+
+Due to the large size of MNIST and CIFAR INRs, we can't provide all of the checkpoints. However, we share the scripts to generate the INRs.
 
 ## Citation
 

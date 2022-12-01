@@ -101,6 +101,32 @@ The INRs used in our experiments can be found [here](https://drive.google.com/dr
 
 ## SDF Smoothing
 
+
+- Fit INR
+
+    ```
+    
+    ```
+
+- Export gradients for INR 
+
+    ```
+    python export_sdf_ray.py
+    ```
+
+- Train INSP-Net
+
+    ```
+    python experiment_scripts/train_sdf_insp.py --experiment_name smooth_armadillo --sz 256 --ti 10 --batch_size 1
+    ```
+
+- Inference INSP-Net
+
+    ```
+    python eval_sdf_insp.py
+    ```
+
+
 ## Image Classification
 
 Due to the large size of MNIST and CIFAR INRs, we can't provide all of the checkpoints. However, we share the scripts to generate the INRs.

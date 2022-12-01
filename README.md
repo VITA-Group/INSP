@@ -53,7 +53,7 @@ unzip DIV2K_train_HR.zip
     python export_colorray.py --save_dir grad/train_color_noise/ --load 'div2k*.png_color_noise_'
     ```
 
-    Then, manually divide `grad/train_color_noise` and put a few of them into `grad/test_color_noise`
+    Then, manually divide `grad/train_color_noise` and put a few of them into `grad/test_color_noise` (in our case we used first 100 images in DIV2K for training and the following 100 images for testing)
 
 - Train INSP-Net
 
@@ -71,7 +71,35 @@ unzip DIV2K_train_HR.zip
     python eval_insp.py --save_path output/denoise --target denoise --ckpt_path logs/denoise/checkpoints/model_current.pth
     ```
 
-The INRs used in our experiments can be found [here](https://drive.google.com/drive/folders/1VaEgKiWIGpQhIw5uxPJGWL0OdTTM-cuo?usp=sharing)
+The INRs used in our experiments can be found [here](https://drive.google.com/drive/folders/1VaEgKiWIGpQhIw5uxPJGWL0OdTTM-cuo?usp=sharing).
+
+## Audio Denoising
+
+- Fit INR
+
+    ```
+    python experiment_scripts/train_audio.py --model_type=sine --wav_path=data/gt_bach.wav --experiment_name audio_noisy_10
+    ```
+
+- Export gradients for INR 
+
+    ```
+    python export_audio.py
+    ```
+
+- Train INSP-Net
+
+    ```
+    python experiment_scripts/train_audio_insp.py --experiment_name audio_denoise --batch_size 10240
+    ```
+
+- Inference INSP-Net
+
+    ```
+    python eval_audio_insp.py
+    ```
+
+## SDF Smoothing
 
 ## Image Classification
 
